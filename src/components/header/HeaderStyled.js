@@ -2,10 +2,17 @@ import styled from "styled-components";
 
 const HeaderWrapper = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 
     padding: 18px;
 `
+const HeaderSubWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+
+    margin-bottom: 32px;
+`
+
 // Calendar State: Month, Year
 const CurrentCalendarStateWrapper = styled.div`
     display: flex;
@@ -59,4 +66,32 @@ const FilterElement = styled.button`
     }
 `
 
-export { HeaderWrapper, CurrentCalendarStateWrapper, MonthYearWrapper, MonthHeader, YearHeader, FilterWrapper, FilterElement }
+const WeekdayWrapper = styled.div`
+    display: grid;
+    grid-template-columns: repeat(7, minmax(128px, 1fr));
+    column-gap: 12px;
+
+    // display: flex;
+    // flex-direction: row;
+    // gap: 32px;
+    // justify-content: space-between;
+`
+
+const WeekdayElement = styled.span`
+    width: 48px;
+    height: 18px;
+    line-height: 20px;
+
+    font-weight: 500;
+    font-size: 14px;
+    text-align: center;
+
+    color: #000000;
+    background-color: #f4f4f4;
+    border-radius: 32px;
+
+    padding: 0;
+    margin: auto;
+`
+
+export { HeaderWrapper, HeaderSubWrapper, CurrentCalendarStateWrapper, MonthYearWrapper, MonthHeader, YearHeader, FilterWrapper, FilterElement, WeekdayWrapper, WeekdayElement }

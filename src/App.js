@@ -23,7 +23,7 @@ function App() {
 	return (
 		<AppWrapper>
 			<Header currentDate={currentDate}/>
-			<DatePane />
+			<DatePane currentDate={currentDate} />
 		</AppWrapper>
   	);
 }

@@ -8,7 +8,7 @@ const DayCardWrapper = styled.div`
     grid-template-rows: repeat(${props => props.releaseN}, 1fr);
     gap: 0px;
 
-    background: rgba(93, 93, 93, 0.25);
+    background: ${props => props.isCurrentMonth ? "rgba(93, 93, 93, 0.25)" : "rgba(0, 0, 0, 0.25)"};
     border-radius: 28px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(2.8px);
@@ -23,8 +23,18 @@ const DaySpan = styled.span`
     line-height: 36px;
 
     border-radius: 100%;
-    background: ${props => props.isEmpty ? "none" : "#da6375"};
-    color: ${props => props.isEmpty ? "#9c939a" : "#f4f4f4"};
+    // background: ${props => props.isEmpty ? "none" : "#da6375"};
+    background: ${props => {
+        if (props.isEmpty) return "none"
+        if (!props.isEmpty && props.isCurrentMonth) return "#da6375"
+        if (!props.isEmpty && !props.isCurrentMonth) return "rgba(208, 60, 83, .75)"
+    }};
+    color: ${props => {
+        if (props.isEmpty && props.isCurrentMonth) return "#9c939a"
+        if (props.isEmpty && !props.isCurrentMonth) return "#665e64"
+        if (!props.isEmpty && props.isCurrentMonth) return "#f4f4f4"
+        if (!props.isEmpty && !props.isCurrentMonth) return "#cfcfcf"
+    }};
 
     font-size: 16px;
     text-align: center;
